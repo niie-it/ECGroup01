@@ -1,0 +1,42 @@
+﻿@model IEnumerable<CartItem>
+
+@{
+	ViewData["Title"] = "Index";
+}
+
+<h1>Giỏ hàng</h1>
+
+<div class="cart-table table-responsive">
+	<table class="table table-bordered">
+		<thead>
+			<tr>
+				<th class="pro-thumbnail">Thumbnail</th>
+				<th class="pro-title">Product</th>
+				<th class="pro-price">Price</th>
+				<th class="pro-quantity">Quantity</th>
+				<th class="pro-subtotal">Total</th>
+				<th class="pro-remove">Remove</th>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach (var item in Model)
+			{
+				<tr>
+					<td class="pro-thumbnail">
+						<a href="#">
+							<img class="img-fluid" src="~/Hinh/HangHoa/@item.Hinh"
+								 alt="@item.TenHh" />
+						</a>
+					</td>
+					<td class="pro-title"><a href="#">@item.TenHh</a></td>
+					<td class="pro-price"><span>@item.DonGia</span></td>
+					<td class="pro-quantity">
+						<div class="pro-qty"><input type="text" value="@item.SoLuong"></div>
+					</td>
+					<td class="pro-subtotal"><span>@item.ThanhTien</span></td>
+					<td class="pro-remove"><a href="#">Xóa</a></td>
+				</tr>
+			}
+		</tbody>
+	</table>
+</div>
