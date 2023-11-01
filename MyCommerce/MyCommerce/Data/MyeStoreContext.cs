@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+using MyCommerce.Models;
 
 namespace MyCommerce.Data
 {
@@ -538,5 +539,7 @@ namespace MyCommerce.Data
         }
 
         partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
+
+        public DbSet<MyCommerce.Models.RegisterVM>? RegisterVM { get; set; }
     }
 }
