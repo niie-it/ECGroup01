@@ -16,6 +16,9 @@ namespace MyCommerce.Models
 
 		public string HoTen { get; set; }
 		public bool GioiTinh { get; set; }
+
+
+		[DataType(DataType.Date)]
 		public DateTime NgaySinh { get; set; }
 		public string? DiaChi { get; set; }
 		public string? DienThoai { get; set; }

@@ -541,5 +541,7 @@ namespace MyCommerce.Data
         partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
 
         public DbSet<MyCommerce.Models.RegisterVM>? RegisterVM { get; set; }
+
+        public DbSet<MyCommerce.Models.LoginVM>? LoginVM { get; set; }
     }
 }

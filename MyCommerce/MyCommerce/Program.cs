@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 using MyCommerce.Data;
 
@@ -13,6 +14,14 @@ builder.Services.AddSession(options =>
 {
 	options.IdleTimeout = TimeSpan.FromSeconds(30);
 });
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(options =>
+    {
+        options.ExpireTimeSpan = TimeSpan.FromMinutes(20);
+        options.SlidingExpiration = true;
+        options.LoginPath = "/KhachHang/DangNhap";
+        options.AccessDeniedPath = "/Forbidden/";
+    });
 
 
 var app = builder.Build();
@@ -30,6 +39,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 app.UseSession();
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(
