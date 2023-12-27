@@ -27,7 +27,23 @@ namespace MyCommerce.Controllers
         }
 
         // GET: HangHoas/Details/5
-        public async Task<IActionResult> Details(int? id)
+        [HttpGet("/san-pham/{tensp}")]
+		public async Task<IActionResult> ProductDetail(string tensp)
+		{
+
+			var hangHoa = await _context.HangHoas
+				.Include(h => h.MaLoaiNavigation)
+				.Include(h => h.MaNccNavigation)
+				.FirstOrDefaultAsync(m => m.TenAlias == tensp);
+			if (hangHoa == null)
+			{
+				return NotFound();
+			}
+
+			return View("Details", hangHoa);
+		}
+
+		public async Task<IActionResult> Details(int? id)
         {
             if (id == null || _context.HangHoas == null)
             {

@@ -26,14 +26,16 @@
 		{
 			<tr>
 				<td>
-					@item.TenHh
-				</td>				
+					<a href="/san-pham/@item.TenAlias">
+						@item.TenHh
+					</a>
+				</td>
 				<td>
 					@item.DonGia.Value.ToString("#,##0")
 				</td>
 				<td>
 					<img src="~/Hinh/HangHoa/@item.Hinh" alt="@item.TenHh" style="height: 100px;" />
-				</td>				
+				</td>
 				<td>
 					<a asp-action="AddToCart" asp-controller="Cart" asp-route-id="@item.MaHh" class="btn btn-primary">Mua</a>
 				</td>
